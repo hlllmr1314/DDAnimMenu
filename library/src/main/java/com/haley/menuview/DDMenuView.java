@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class DDMenuView extends RelativeLayout {
 
+    private static int ANIM_DURATION = 500;
+
     View view;
 
     LinearLayout lay1;
@@ -229,7 +231,7 @@ public class DDMenuView extends RelativeLayout {
             ObjectAnimator objectAnimator = new ObjectAnimator();
             objectAnimator.setTarget(layout);
             objectAnimator.setPropertyName("translationY");
-            objectAnimator.setDuration(700);
+            objectAnimator.setDuration(ANIM_DURATION);
             objectAnimator.setFloatValues(-layout.getY(), 20, 0);
             objectAnimator.setInterpolator(new DecelerateInterpolator(1));
 
@@ -241,7 +243,7 @@ public class DDMenuView extends RelativeLayout {
             ObjectAnimator objectAnimator = new ObjectAnimator();
             objectAnimator.setTarget(layout);
             objectAnimator.setPropertyName("translationY");
-            objectAnimator.setDuration(700);
+            objectAnimator.setDuration(ANIM_DURATION);
             objectAnimator.setFloatValues(-layout.getY(), 20, 0);
             objectAnimator.setInterpolator(new DecelerateInterpolator(1));
 
@@ -253,7 +255,7 @@ public class DDMenuView extends RelativeLayout {
             public void run() {
                 isOpen = true;
             }
-        }, 700);
+        }, ANIM_DURATION);
     }
 
     public void close() {
@@ -269,7 +271,7 @@ public class DDMenuView extends RelativeLayout {
             ObjectAnimator objectAnimator = new ObjectAnimator();
             objectAnimator.setTarget(layout);
             objectAnimator.setPropertyName("translationY");
-            objectAnimator.setDuration(700);
+            objectAnimator.setDuration(ANIM_DURATION);
             objectAnimator.setFloatValues(0, -layout.getY() - layout.getHeight());
             objectAnimator.setInterpolator(new AccelerateInterpolator(1));
             objectAnimator.start();
@@ -281,7 +283,7 @@ public class DDMenuView extends RelativeLayout {
             ObjectAnimator objectAnimator = new ObjectAnimator();
             objectAnimator.setTarget(layout);
             objectAnimator.setPropertyName("translationY");
-            objectAnimator.setDuration(700);
+            objectAnimator.setDuration(ANIM_DURATION);
             objectAnimator.setFloatValues(0, -layout.getY() - layout.getHeight());
             objectAnimator.setInterpolator(new AccelerateInterpolator(1));
             objectAnimator.start();
@@ -304,7 +306,7 @@ public class DDMenuView extends RelativeLayout {
 
                 isOpen = false;
             }
-        }, 780);
+        }, ANIM_DURATION + 30);
 
     }
 
@@ -316,22 +318,23 @@ public class DDMenuView extends RelativeLayout {
     private OnClickListener listener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (menuClickListener == null) {
-                return;
+            if (menuClickListener != null) {
+                if (v == ico1) {
+                    menuClickListener.menuClick(0, menuItemEntities.get(0));
+                } else if (v == ico2) {
+                    menuClickListener.menuClick(1, menuItemEntities.get(1));
+                } else if (v == ico3) {
+                    menuClickListener.menuClick(2, menuItemEntities.get(2));
+                } else if (v == ico4) {
+                    menuClickListener.menuClick(3, menuItemEntities.get(3));
+                } else if (v == ico5) {
+                    menuClickListener.menuClick(4, menuItemEntities.get(4));
+                } else if (v == ico6) {
+                    menuClickListener.menuClick(5, menuItemEntities.get(5));
+                }
             }
-            if (v == ico1) {
-                menuClickListener.menuClick(0, menuItemEntities.get(0));
-            } else if (v == ico2) {
-                menuClickListener.menuClick(1, menuItemEntities.get(1));
-            } else if (v == ico3) {
-                menuClickListener.menuClick(2, menuItemEntities.get(2));
-            } else if (v == ico4) {
-                menuClickListener.menuClick(3, menuItemEntities.get(3));
-            } else if (v == ico5) {
-                menuClickListener.menuClick(4, menuItemEntities.get(4));
-            } else if (v == ico6) {
-                menuClickListener.menuClick(5, menuItemEntities.get(5));
-            }
+
+            close();
         }
     };
 

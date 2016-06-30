@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements DDMenuClickListen
         if (menuView.isOpen()) {
             menuView.close();
         } else {
-
             menuView.open();
         }
     }
@@ -60,5 +59,6 @@ public class MainActivity extends AppCompatActivity implements DDMenuClickListen
     @Override
     public void menuClick(int index, MenuItemEntity entity) {
         Toast.makeText(this, entity.getMenuText() + " click", Toast.LENGTH_LONG).show();
+        flag  = 1;
     }
 }
