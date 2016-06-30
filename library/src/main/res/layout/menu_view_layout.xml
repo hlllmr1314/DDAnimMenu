@@ -15,12 +15,13 @@
         android:visibility="invisible">
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/item_ico1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/icon_test" />
 
         <TextView
+            android:id="@+id/item_title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -41,11 +42,13 @@
         android:visibility="invisible">
 
         <ImageView
+            android:id="@+id/item_ico2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icon_test" />
 
         <TextView
+            android:id="@+id/item_title2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -66,11 +69,13 @@
         android:visibility="invisible">
 
         <ImageView
+            android:id="@+id/item_ico3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/icon_test" />
 
         <TextView
+            android:id="@+id/item_title3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -93,11 +98,13 @@
         android:visibility="invisible">
 
         <ImageView
+            android:id="@+id/item_ico4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/icon_test" />
 
         <TextView
+            android:id="@+id/item_title4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -120,11 +127,13 @@
         android:visibility="invisible">
 
         <ImageView
+            android:id="@+id/item_ico5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/icon_test" />
 
         <TextView
+            android:id="@+id/item_title5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -147,11 +156,13 @@
         android:visibility="invisible">
 
         <ImageView
+            android:id="@+id/item_ico6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/icon_test" />
 
         <TextView
+            android:id="@+id/item_title6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

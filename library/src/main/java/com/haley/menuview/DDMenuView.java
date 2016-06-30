@@ -90,9 +90,62 @@ public class DDMenuView extends RelativeLayout {
         super.onDraw(canvas);
     }
 
-    public void showContent(List<MenuItemEntity> entities) {
-        this.menuItemEntities = entities;
+    public void setContents(List<MenuItemEntity> entities) {
+        if (entities != null) {
+            this.menuItemEntities = entities;
+        }
 
+        initData();
+    }
+
+    private void initData() {
+
+        if (view == null) {
+            return;
+        }
+
+        views1.clear();
+        views2.clear();
+
+        if (menuItemEntities.size() > 0) {
+
+            MenuItemEntity entity;
+            for (int i = 0; i < menuItemEntities.size(); i++) {
+                entity = menuItemEntities.get(i);
+                switch (i) {
+                    case 0:
+                        ico1.setImageDrawable(entity.getMenuIco());
+                        text1.setText(entity.getMenuText());
+                        views2.add(lay1);
+                        break;
+                    case 1:
+                        ico2.setImageDrawable(entity.getMenuIco());
+                        text2.setText(entity.getMenuText());
+                        views2.add(lay2);
+                        break;
+                    case 2:
+                        ico3.setImageDrawable(entity.getMenuIco());
+                        text3.setText(entity.getMenuText());
+                        views2.add(lay3);
+                        break;
+                    case 3:
+                        ico4.setImageDrawable(entity.getMenuIco());
+                        text4.setText(entity.getMenuText());
+                        views1.add(lay4);
+                        break;
+                    case 4:
+                        ico5.setImageDrawable(entity.getMenuIco());
+                        text5.setText(entity.getMenuText());
+                        views1.add(lay5);
+                        break;
+                    case 5:
+                        ico6.setImageDrawable(entity.getMenuIco());
+                        text6.setText(entity.getMenuText());
+                        views1.add(lay6);
+                        break;
+                }
+            }
+        }
     }
 
     private void init() {
@@ -115,16 +168,22 @@ public class DDMenuView extends RelativeLayout {
         lay5 = (LinearLayout) findViewById(R.id.item_lay5);
         lay6 = (LinearLayout) findViewById(R.id.item_lay6);
 
-        views1.clear();
-        views2.clear();
+        ico1 = (ImageView) findViewById(R.id.item_ico1);
+        ico2 = (ImageView) findViewById(R.id.item_ico2);
+        ico3 = (ImageView) findViewById(R.id.item_ico3);
+        ico4 = (ImageView) findViewById(R.id.item_ico4);
+        ico5 = (ImageView) findViewById(R.id.item_ico5);
+        ico6 = (ImageView) findViewById(R.id.item_ico6);
 
-        views1.add(lay2);
-        views1.add(lay5);
+        text1 = (TextView) findViewById(R.id.item_title1);
+        text2 = (TextView) findViewById(R.id.item_title2);
+        text3 = (TextView) findViewById(R.id.item_title3);
+        text4 = (TextView) findViewById(R.id.item_title4);
+        text5 = (TextView) findViewById(R.id.item_title5);
+        text6 = (TextView) findViewById(R.id.item_title6);
 
-        views2.add(lay1);
-        views2.add(lay3);
-        views2.add(lay4);
-        views2.add(lay6);
+        initData();
+
     }
 
     private void showMenuView() {
@@ -170,7 +229,7 @@ public class DDMenuView extends RelativeLayout {
             ObjectAnimator objectAnimator = new ObjectAnimator();
             objectAnimator.setTarget(layout);
             objectAnimator.setPropertyName("translationY");
-            objectAnimator.setDuration(780);
+            objectAnimator.setDuration(700);
             objectAnimator.setFloatValues(-layout.getY(), 20, 0);
             objectAnimator.setInterpolator(new DecelerateInterpolator(1));
 
@@ -182,7 +241,7 @@ public class DDMenuView extends RelativeLayout {
             public void run() {
                 isOpen = true;
             }
-        }, 780);
+        }, 700);
     }
 
     public void close() {
@@ -210,30 +269,30 @@ public class DDMenuView extends RelativeLayout {
             ObjectAnimator objectAnimator = new ObjectAnimator();
             objectAnimator.setTarget(layout);
             objectAnimator.setPropertyName("translationY");
-            objectAnimator.setDuration(780);
+            objectAnimator.setDuration(700);
             objectAnimator.setFloatValues(0, -layout.getY() - layout.getHeight());
             objectAnimator.setInterpolator(new AccelerateInterpolator(1));
             objectAnimator.start();
             anims2.add(objectAnimator);
         }
 
-      postDelayed(new Runnable() {
-          @Override
-          public void run() {
-              dismissMenuView();
-              Log.i("1001", views2.get(0).getY() + "dp");
-              for (ObjectAnimator animator : anims1) {
-                  animator.setDuration(1);
-                  animator.reverse();
-              }
-              for (ObjectAnimator animator : anims2) {
-                  animator.setDuration(1);
-                  animator.reverse();
-              }
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dismissMenuView();
+                Log.i("1001", views2.get(0).getY() + "dp");
+                for (ObjectAnimator animator : anims1) {
+                    animator.setDuration(1);
+                    animator.reverse();
+                }
+                for (ObjectAnimator animator : anims2) {
+                    animator.setDuration(1);
+                    animator.reverse();
+                }
 
-              isOpen = false;
-          }
-      },780);
+                isOpen = false;
+            }
+        }, 780);
 
     }
 
