@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,12 +35,12 @@ public class DDMenuView extends RelativeLayout {
     LinearLayout lay5;
     LinearLayout lay6;
 
-    ImageView ico1;
-    ImageView ico2;
-    ImageView ico3;
-    ImageView ico4;
-    ImageView ico5;
-    ImageView ico6;
+    ImageButton ico1;
+    ImageButton ico2;
+    ImageButton ico3;
+    ImageButton ico4;
+    ImageButton ico5;
+    ImageButton ico6;
 
     TextView text1;
     TextView text2;
@@ -57,6 +57,8 @@ public class DDMenuView extends RelativeLayout {
     private List<MenuItemEntity> menuItemEntities = new ArrayList<>();
 
     private boolean isOpen = false;
+
+    private DDMenuClickListener menuClickListener;
 
     public DDMenuView(Context context) {
         super(context);
@@ -90,11 +92,14 @@ public class DDMenuView extends RelativeLayout {
         super.onDraw(canvas);
     }
 
+    public void setMenuClickListener(DDMenuClickListener menuClickListener) {
+        this.menuClickListener = menuClickListener;
+    }
+
     public void setContents(List<MenuItemEntity> entities) {
         if (entities != null) {
             this.menuItemEntities = entities;
         }
-
         initData();
     }
 
@@ -168,12 +173,12 @@ public class DDMenuView extends RelativeLayout {
         lay5 = (LinearLayout) findViewById(R.id.item_lay5);
         lay6 = (LinearLayout) findViewById(R.id.item_lay6);
 
-        ico1 = (ImageView) findViewById(R.id.item_ico1);
-        ico2 = (ImageView) findViewById(R.id.item_ico2);
-        ico3 = (ImageView) findViewById(R.id.item_ico3);
-        ico4 = (ImageView) findViewById(R.id.item_ico4);
-        ico5 = (ImageView) findViewById(R.id.item_ico5);
-        ico6 = (ImageView) findViewById(R.id.item_ico6);
+        ico1 = (ImageButton) findViewById(R.id.item_ico1);
+        ico2 = (ImageButton) findViewById(R.id.item_ico2);
+        ico3 = (ImageButton) findViewById(R.id.item_ico3);
+        ico4 = (ImageButton) findViewById(R.id.item_ico4);
+        ico5 = (ImageButton) findViewById(R.id.item_ico5);
+        ico6 = (ImageButton) findViewById(R.id.item_ico6);
 
         text1 = (TextView) findViewById(R.id.item_title1);
         text2 = (TextView) findViewById(R.id.item_title2);
@@ -181,6 +186,13 @@ public class DDMenuView extends RelativeLayout {
         text4 = (TextView) findViewById(R.id.item_title4);
         text5 = (TextView) findViewById(R.id.item_title5);
         text6 = (TextView) findViewById(R.id.item_title6);
+
+        ico1.setOnClickListener(listener);
+        ico2.setOnClickListener(listener);
+        ico3.setOnClickListener(listener);
+        ico4.setOnClickListener(listener);
+        ico5.setOnClickListener(listener);
+        ico6.setOnClickListener(listener);
 
         initData();
 
@@ -300,5 +312,27 @@ public class DDMenuView extends RelativeLayout {
         removeAllViews();
         view = null;
     }
+
+    private OnClickListener listener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (menuClickListener == null) {
+                return;
+            }
+            if (v == ico1) {
+                menuClickListener.menuClick(0, menuItemEntities.get(0));
+            } else if (v == ico2) {
+                menuClickListener.menuClick(1, menuItemEntities.get(1));
+            } else if (v == ico3) {
+                menuClickListener.menuClick(2, menuItemEntities.get(2));
+            } else if (v == ico4) {
+                menuClickListener.menuClick(3, menuItemEntities.get(3));
+            } else if (v == ico5) {
+                menuClickListener.menuClick(4, menuItemEntities.get(4));
+            } else if (v == ico6) {
+                menuClickListener.menuClick(5, menuItemEntities.get(5));
+            }
+        }
+    };
 
 }

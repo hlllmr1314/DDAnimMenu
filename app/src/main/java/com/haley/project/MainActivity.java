@@ -3,14 +3,16 @@ package com.haley.project;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
+import com.haley.menuview.DDMenuClickListener;
 import com.haley.menuview.DDMenuView;
 import com.haley.menuview.MenuItemEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DDMenuClickListener {
 
     DDMenuView menuView;
 
@@ -28,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         menuView = (DDMenuView) findViewById(R.id.menu);
+        menuView.setMenuClickListener(this);
         menuView.setContents(allEntitys);
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         if (hasFocus) {
-            menuView.open();
+//            menuView.open();
         }
     }
 
@@ -54,4 +57,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void menuClick(int index, MenuItemEntity entity) {
+        Toast.makeText(this, entity.getMenuText() + " click", Toast.LENGTH_LONG).show();
+    }
 }

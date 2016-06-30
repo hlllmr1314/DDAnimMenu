@@ -14,11 +14,12 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/item_ico1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_test" />
+            android:background="@android:color/transparent"
+             />
 
         <TextView
             android:id="@+id/item_title1"
@@ -41,11 +42,12 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/item_ico2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_test" />
+            android:background="@android:color/transparent"
+             />
 
         <TextView
             android:id="@+id/item_title2"
@@ -68,11 +70,12 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/item_ico3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_test" />
+            android:background="@android:color/transparent"
+             />
 
         <TextView
             android:id="@+id/item_title3"
@@ -97,11 +100,12 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/item_ico4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_test" />
+            android:background="@android:color/transparent"
+             />
 
         <TextView
             android:id="@+id/item_title4"
@@ -126,11 +130,12 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/item_ico5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_test" />
+            android:background="@android:color/transparent"
+             />
 
         <TextView
             android:id="@+id/item_title5"
@@ -155,11 +160,12 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/item_ico6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_test" />
+            android:background="@android:color/transparent"
+             />
 
         <TextView
             android:id="@+id/item_title6"
